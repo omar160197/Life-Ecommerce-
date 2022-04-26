@@ -1,0 +1,11 @@
+
+body{
+    height: 100vh;
+    position: relative;
+}
+.footerbg{
+    background-color: #0c1522;
+    color: white;
+    width: 100%;
+}
+

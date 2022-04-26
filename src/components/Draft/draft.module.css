@@ -1,0 +1,8 @@
+.draft{
+    width: 100%;
+}
+.draft:hover{
+ transition: "all"; 
+ transform: scale(1.03);
+ cursor: pointer;
+}

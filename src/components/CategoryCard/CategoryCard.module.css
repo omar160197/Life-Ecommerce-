@@ -1,0 +1,12 @@
+.categoryimg {
+  height: 300px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+
+.categoryimg:hover {
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+  transition: all;
+  transform: scale(1.01);
+}

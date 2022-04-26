@@ -1,0 +1,6 @@
+.side div:hover
+{
+  cursor: pointer;
+  background-color: #ccc;
+  
+}

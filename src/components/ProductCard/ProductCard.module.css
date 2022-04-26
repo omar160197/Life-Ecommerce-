@@ -1,0 +1,11 @@
+.img {
+  width: 100%;
+  height: 7rem;
+}
+.showButton{
+  visibility: hidden;
+  margin: 10px;
+}
+.show:hover .showButton{
+  visibility: visible;
+}

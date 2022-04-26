@@ -1,0 +1,9 @@
+.paper {
+    background-image: url('../../assets/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 20px;
+  
+  }
+  
