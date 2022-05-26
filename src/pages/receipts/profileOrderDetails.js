@@ -8,6 +8,7 @@ import { toggle } from "../../store/receipts/receiptSlice";
 import { getUserInfo } from "../../store/receipts/receiptSlice";
 import { insertOrder } from "../../store/orders/ordersSlice";
 import Swal from "sweetalert2";
+import PriceDetails2 from "../../components/rceipts/price-details2"
 
 function ProfileOrdersDetails({ order }) {
   const user = useSelector((state) => state.auth.user);
@@ -43,7 +44,7 @@ function ProfileOrdersDetails({ order }) {
               <div className="border border-bottom-0 rounded-2 p-2">
                 <p className=" border-bottom">SHIPMENT DETAILS</p>
                 <ShipmentDetails2  order={order}/>
-                <PriceDetails order={order}/>
+                <PriceDetails2 order={order}/>
               </div>
             </div>
           </div>

@@ -87,6 +87,9 @@ html::-webkit-scrollbar-thumb {
  color:rgb(206, 198, 198);
  -webkit-text-stroke-width: 0.5px;
  -webkit-text-stroke-color: rgba(95, 94, 29, 0.918);
+ padding-block:10px ;
+ white-space: nowrap;
+ 
 }
 
 .navbar .navbar-nav .nav-link.active,
@@ -117,8 +120,8 @@ html::-webkit-scrollbar-thumb {
     background-color: #212529;
     width: 860px;
     height: 200px;
-    left: -760px;
-    top: 55px;
+    right:-100px;
+    top: 45px;
     border-bottom: 2px solid rgb(255, 255, 255);
     border-radius: 0 0 30px 30px;
     transition: 1.5s !important;

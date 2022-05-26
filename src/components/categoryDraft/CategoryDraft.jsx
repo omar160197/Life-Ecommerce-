@@ -32,11 +32,11 @@ const CategoryDraft = () => {
                       <div className={styles.pimage} >
                         <img src={img1} alt={"image"}loading="lazy" width="100%" height="100%"/>
                         <div className={styles.movingdiv}>
-                          <h4 className={styles.textcatcard}>This is  You Can See more Product By Clicking Here
+                          <h4 className={styles.textcatcard}>Tools
                             <p className={styles.textpara}>Lorem ipsum dolor Lorem ipsum dolor sit amet.</p>
                           </h4>
                           <button className={styles.btncat} variant="contained" onClick={() =>
-                            navigate(`/`)}>View All	&#8594;</button>
+                            navigate(`/tools`)}>View All	&#8594;</button>
                         </div>
                       </div>
                     </div>
@@ -49,11 +49,11 @@ const CategoryDraft = () => {
                       <div className={styles.pimage} >
                         <img src={img2} alt={"image"}loading="lazy" width="100%" height="100%"/>
                         <div className={styles.movingdiv}>
-                          <h4 className={styles.textcatcard}>This is  You Can See more Product By Clicking Here
+                          <h4 className={styles.textcatcard}>Units
                             <p className={styles.textpara}>Lorem ipsum dolor Lorem ipsum dolor sit amet.</p>
                           </h4>
                           <button className={styles.btncat} variant="contained" onClick={() =>
-                            navigate(`/`)}>View All	&#8594;</button>
+                            navigate(`/units`)}>View All	&#8594;</button>
                         </div>
                       </div>
                     </div>
@@ -68,11 +68,11 @@ const CategoryDraft = () => {
                         <div className={styles.pimage} >
                           <img src={img3} alt={"image"}loading="lazy" width="100%" height="100%"/>
                           <div className={styles.movingdiv}>
-                            <h4 className={styles.textcatcard}>This is  You Can See more Product By Clicking Here
+                            <h4 className={styles.textcatcard}>Medicines
                               <p className={styles.textpara}>Lorem ipsum dolor Lorem ipsum dolor sit amet.</p>
                             </h4>
                             <button className={styles.btncat} variant="contained" onClick={() =>
-                              navigate(`/`)}>View All	&#8594;</button>
+                              navigate(`/medicines`)}>View All	&#8594;</button>
                           </div>
                         </div>
                       </div>
@@ -84,11 +84,11 @@ const CategoryDraft = () => {
                         <div className={styles.pimage} >
                           <img src={img4} alt={"image"}loading="lazy" width="100%" height="100%"/>
                           <div className={styles.movingdiv}>
-                            <h4 className={styles.textcatcard}>This is  You Can See more Product By Clicking Here
+                            <h4 className={styles.textcatcard}>News
                               <p className={styles.textpara}>Lorem ipsum dolor Lorem ipsum dolor sit amet.</p>
                             </h4>
                             <button className={styles.btncat} variant="contained" onClick={() =>
-                              navigate(`/`)}>View All	&#8594;</button>
+                              navigate(`/news`)}>View All	&#8594;</button>
                           </div>
                         </div>
                       </div>

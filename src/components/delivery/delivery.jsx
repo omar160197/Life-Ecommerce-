@@ -1,75 +1,75 @@
 import * as React from "react";
-import { useTheme } from "@mui/material/styles";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+// import { useTheme } from "@mui/material/styles";
+// import OutlinedInput from "@mui/material/OutlinedInput";
+// import InputLabel from "@mui/material/InputLabel";
+// import MenuItem from "@mui/material/MenuItem";
+// import FormControl from "@mui/material/FormControl";
+// import Select from "@mui/material/Select";
 import { Box } from "@mui/system";
 import { Card, CardContent, Typography } from "@mui/material";
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
+// const ITEM_HEIGHT = 48;
+// const ITEM_PADDING_TOP = 8;
+// const MenuProps = {
+//   PaperProps: {
+//     style: {
+//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+//       width: 250,
+//     },
+//   },
+// };
 
 
 
-const location = ["Kafr el-Sheikh", "Cairo"];
+// const location = ["Kafr el-Sheikh", "Cairo"];
 
-const city = [
-  "Burullus",
-  "alhamul",
-  "bila",
-  "6th of October",
-  "alriyad",
-  "sayidi salim",
-  "qiliyn",
-  "Mutubas",
-  "fuh",
-  "dusuq",
-];
+// const city = [
+//   "Burullus",
+//   "alhamul",
+//   "bila",
+//   "6th of October",
+//   "alriyad",
+//   "sayidi salim",
+//   "qiliyn",
+//   "Mutubas",
+//   "fuh",
+//   "dusuq",
+// ];
 
-function getStyles(name, locationName, theme) {
-  return {
-    fontWeight:
-      locationName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
+// function getStyles(name, locationName, theme) {
+//   return {
+//     fontWeight:
+//       locationName.indexOf(name) === -1
+//         ? theme.typography.fontWeightRegular
+//         : theme.typography.fontWeightMedium,
+//   };
+// }
 
 export default function Delivery() {
-  const theme = useTheme();
-  const [locationName, setlocationName] = React.useState([]);
+  // const theme = useTheme();
+  // const [locationName, setlocationName] = React.useState([]);
 
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setlocationName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
+  // const handleChange = (event) => {
+  //   const {
+  //     target: { value },
+  //   } = event;
+  //   setlocationName(
+  //     // On autofill we get a stringified value.
+  //     typeof value === "string" ? value.split(",") : value
+  //   );
+  // };
 
   return (
 
 <Box>
   
       <Card>
-      <Typography variant="h5" component="h1" mt={2} textAlign='center'>
+      <Typography variant="h5" component="h1" mt={2} textAlign='center' sx={{ p: 1 }}>
        DELIVERY & RETURNS
               </Typography>
          
         <CardContent>
-          <FormControl sx={{ l: 1, m: 1, width:"100%" }}>
+          {/* <FormControl sx={{ l: 1, m: 1, width:"100%" }}>
             <InputLabel id="demo-multiple-name-label">Location</InputLabel>
             <Select
               labelId="demo-multiple-name-label"
@@ -112,7 +112,7 @@ export default function Delivery() {
                 </MenuItem>
               ))}
             </Select>
-          </FormControl>
+          </FormControl> */}
           <Box
             sx={{ display: "flex", justifyContent: "space-between" }}
             padding={1}
@@ -123,7 +123,7 @@ export default function Delivery() {
               Door Delivery 
               </Typography>
               <Typography variant="subtitle1" component="p">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Ready for delivery between 25 April & 26 April when you order within next 10hrs 34mins
               </Typography>
             </Box>
           </Box>
@@ -137,7 +137,7 @@ export default function Delivery() {
               Pickup Station 
               </Typography>
               <Typography variant="subtitle1" component="p">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                 Ready for delivery between 25 April & 26 April when you order within next 10hrs 34mins
               </Typography>
             </Box>
           </Box>
@@ -151,7 +151,7 @@ export default function Delivery() {
               Return Policy
               </Typography>
               <Typography variant="subtitle1" component="p">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                14 days free return up to 30 days for defective products with necessity for requesting a return within 24 hours from the delivery date.
               </Typography>
             </Box>
           </Box>

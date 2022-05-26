@@ -1,17 +1,18 @@
-export default function SkillsProgress({numOfProductsThatReduced,maxNumOfProducts}) {
+export default function SkillsProgress({numOfProductsThatReduced,maxNumOfProducts,itemsLeft}) {
   
-  let leftItems=maxNumOfProducts-numOfProductsThatReduced;
-  let persntage=(leftItems/maxNumOfProducts) *100
+  // let updatedftItems = maxNumOfProducts-numOfProductsThatReduced;
+  let percentage=(itemsLeft/maxNumOfProducts) *100
+  // let persntage=(maxNumOfProducts) * (100/100)
 
     return (        
     <div> 
-        <p>{`${leftItems} Items Left`}</p>
+        <p>{`${itemsLeft} Items Left`}</p>
         <div className="progress" style={{height:"8px",width:"100%",marginLeft:"auto",marginRight:"auto"}}>
           <div
-            className={`progress-bar ${leftItems<5?'bg-danger':'bg-warning'}`}
+            className={`progress-bar ${maxNumOfProducts<(maxNumOfProducts * (5/100)) ?'bg-danger':'bg-warning'}`}
             role="progressbar"
-            style={{width: `${persntage}%`}}
-            aria-valuenow={persntage}
+            style={{width: `${percentage}%`}}
+            aria-valuenow={itemsLeft}
             aria-valuemin="0"
             aria-valuemax={`${maxNumOfProducts}`}
           >
@@ -19,4 +20,3 @@ export default function SkillsProgress({numOfProductsThatReduced,maxNumOfProduct
         </div>
       </div>);
   }
-  

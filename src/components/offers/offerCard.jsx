@@ -18,6 +18,7 @@ export default function OffersCard({
   description,
   product
 }) {
+
   let priceAfter = discountPersentatge !== 0 ?(priceBefore * discountPersentatge) / 100 :priceBefore;
   const navigate = useNavigate();
 
@@ -31,7 +32,7 @@ export default function OffersCard({
    }
 
   return (
-    <Card onClick={onClick}  className={styles.draft} sx={{ maxWidth: 300, maxHeight: 330, marginLeft: "2%" }} >
+    <Card onClick={onClick}  className={styles.draft} sx={{ maxWidth: 280, maxHeight: 330, marginLeft: "2%" }} >
   
         <CardMedia 
           sx={{
@@ -93,8 +94,10 @@ export default function OffersCard({
               </>
           
           <SkillsProgress
+           itemsLeft={product.itemsLeft}
             maxNumOfProducts={maxNumOfProducts}
             numOfProductsThatReduced={numOfProductsThatReduced}
+            // leftItems={product.itemsLeft}
           />
         </CardContent>
     </Card>

@@ -20,7 +20,7 @@ import Favourite from './pages/favourite/favourite';
 import Tools from './components/category/tools/tools';
 import Units from './components/category/units/units';
 import Medicines from './components/category/medicines/medicines';
-import News from './components/category/news/news';
+import News from './pages/News/News.jsx';
 import Other from './components/category/other/other';
 import SearchResult from './pages/SearchResult/searchResult';
 import Receipts from './pages/receipts/receipt'
@@ -50,7 +50,7 @@ const App = () => {
             <Route path='/units' element={<Units />} />
             <Route path='/medicines' element={<Medicines />} />
             <Route path='/news' element={<News />} />
-            <Route path='/others' element={<Other />} />
+            <Route path='/others' element={<Other/>} />
             <Route path='/product/:id' element={<ProductDetails />} />
             <Route path='/favourite' element={<Favourite />} />
             <Route path='/cart' element={<Cart />} />

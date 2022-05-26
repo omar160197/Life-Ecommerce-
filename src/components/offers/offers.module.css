@@ -1,0 +1,48 @@
+.cover{
+    background-image: url('../../assets/imge.jpg');
+    background-attachment: fixed;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+  }
+  .paragraph{
+    font-family: 'FontAwesome';
+    font-size: 1.4rem;
+    height: 400px;
+    text-align: center;
+    background-color: rgba(69, 69, 69, 0.538);
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 25px;
+  }
+ .offer{
+    background-image: url('../../assets/offer.jpg');
+    background-attachment: fixed;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+ }
+ .offer1{
+    background-image: url('../../assets/offer1.png');
+    background-attachment: fixed;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+ }
+ .offer2{
+    background-image: url('../../assets/offer2.png');
+    background-attachment: fixed;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+ }

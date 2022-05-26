@@ -135,9 +135,10 @@ export const register = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await axios.post("http://localhost:8080/customer", userData);
-      if (res.data) {
-        localStorage.setItem("user", JSON.stringify(res.data));
-      }
+      // if (res.data) {
+      //   localStorage.setItem("user", JSON.stringify(res.data));
+      // }
+      console.log(res);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -254,7 +255,7 @@ export const authSlice = createSlice({
       console.log(action);
       state.isLoading = false;
       state.isSuccess = true;
-      state.user = action.payload;
+      // state.user = action.payload;
     },
     [register.rejected]: (state, action) => {
       console.log(action);
@@ -299,7 +300,7 @@ export const authSlice = createSlice({
       const userEdit = JSON.parse(localStorage.getItem("user"))
       userEdit.customer = newUser
       localStorage.setItem("user",JSON.stringify(userEdit)) 
-
+      state.products = action.payload;
     },
     [getUsers.rejected]: (state, action) => {
       console.log(action);

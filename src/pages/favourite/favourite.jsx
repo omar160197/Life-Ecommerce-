@@ -1,196 +1,108 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import Delivery from "../../components/delivery/delivery";
-import ImageGallaryComponent from "../../components/Deatails/detailsScrollerCarasol";
-import { CardActions, Container, Rating, Typography } from "@mui/material";
-import DiscountCard from "../../components/Deatails/detailsDiscountCard";
-import ProductDetails from "../../components/Deatails/detailsProductCard";
-import CartButtons from "../../components/Deatails/detailsCartButton";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Container, Alert, Box, Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-
-import {
-  addFavourite,
-  deleteFavourite,
-} from "../../store/auth/authSlice";
-import { getSelectedProduct } from "../../store/offers/offersSlice";
-import { getTotals } from "../../store/cart/cartSlice";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  color: theme.palette.text.secondary,
-}));
-
-export default function Deatails2() {
-  const { selectedOfferProduct } = useSelector((state) => state.discounts);
-
-  const [isActive, setIsActive] = React.useState(false);
-  const user = useSelector((state) => state.auth.user);
+import DeleteIcon from "@mui/icons-material/Delete";
+import { removeItem } from "../../store/favourite/favouriteSlice";
+import OfferCard from "../../components/offersCard/offersCard";
+import { useEffect } from "react";
+import { deleteFavourite, getFavourite } from "../../store/auth/authSlice";
+import { useLocation, useNavigate } from "react-router-dom";
+const Favourite = () => {
   const myfavourites = useSelector((state) => state.auth.myfavourites);
-  const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
-  const location =useLocation()
+  const navigate = useNavigate();
+  let favoriteCard = "";
 
-  let myVariable =location.state.selectedProduct;
-  
-  const cart = useSelector((state) => state.cart);
-   
-console.log(myVariable);
+  console.log(user);
 
-  React.useEffect(() => {
-    dispatch(getTotals());
-    window.scrollTo(0, 0);
-    if (user && myfavourites.length != 0  ) {
-      if (myfavourites.find((item) => item._id === myVariable._id)){
-        setIsActive(true);
-      } else {
-        setIsActive(false);
-      }
-    } 
-  },[location.pathname,cart]);
+  // useEffect(() => {
+  //   window.scroll(0, 0);
+  //   if (user) {
+  //     dispatch(getFavourite(user.customer._id));
+  //   }
+  // }, []);
 
-
-  const handleSelect = () => {
-    if (user && myfavourites.length != 0) {
-      if (myfavourites.find((item) => item._id === myVariable._id)) {
-        console.log(true);
-        setIsActive(false);
-        
-        // delete from favorite Array'
-        dispatch(
-          deleteFavourite({
-            productId: myVariable._id,
-            ownerId: user.customer._id,
-          })
+  if (user && myfavourites.length != 0) {
+    favoriteCard =
+      myfavourites &&
+      myfavourites.map((item, index) => {
+        return (
+          <Grid key={index} item xs={6} md={3} sm={6}>
+            <Box sx={{ position: "relative" }}>
+              <OfferCard
+                product={item}
+                productId={item._id}
+                productName={item.productName}
+                maxNumOfProducts={item.quantity}
+                numOfProductsThatReduced={2}
+                priceBefore={item.price}
+                image={item.image}
+                discountPersentatge={item.discount.discountAmount}
+                ratingValue={item.rating}
+                description={item.description}
+              />
+              <DeleteIcon
+                sx={{
+                  m: 1,
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  fontSize: "35px",
+                  color: "#ff5722",
+                }}
+                onClick={() => {
+                  
+                  dispatch(
+                    deleteFavourite({
+                      productId: item._id,
+                      ownerId: user.customer._id,
+                    })
+                  );
+                  // dispatch(getFavourite(user.customer._id));
+                  // navigate("/favourite");
+                }}
+                cursor="pointer"
+              />
+            </Box>
+          </Grid>
         );
-      } else {
-        setIsActive(true);
-        //add to favorite Array
-        dispatch(
-          addFavourite({ myVariable, ownerId: user.customer._id })
-        );
-      }
-    } else if (user && myfavourites.length === 0) {
-      setIsActive(true);
-      //add to favorite Array
-      dispatch(
-        addFavourite({ myVariable, ownerId: user.customer._id })
-      );
-    } else {
-      navigate("/register");
-    }
-  };
-
+      });
+  }
 
   return (
-    myVariable && (
-      <Container sx={{ marginY: "4%" }}>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={8} sm={12}>
-              <Item>
-                <Grid container>
-                  <Grid item xs={12} md={6} sm={12}>
-                    <div style={{ maxWidth: "80%" }}>
-                      <ImageGallaryComponent
-                        title={myVariable.productName}
-                        image={myVariable.image}
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={12} md={6} sm={12}>
-                    <Grid container item spacing={3}>
-                      <Grid item xs={10}>
-                        <Typography
-                          sx={{
-                            fontSize: 20,
-                            fontWeight: "bold",
-                            fontFamily: "tahoma",
-                          }}
-                          color="text.primary"
-                        >
-                          {myVariable.productName}
-                        </Typography>
-                        <Typography sx={{ fontSize: 20 }} color="text.primary">
-                          {myVariable.description}
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={2}>
-                        <i
-                          className="fa fa-solid fa-heart"
-                          style={{
-                            fontSize: "25px",
-                            cursor: "pointer",
-                            color: `${isActive ? "red" : "#ccc"}`,
-                          }}
-                          onClick={handleSelect}
-                        ></i>
-                      </Grid>
-                    </Grid>
-                    <Box sx={{ display: "center", alignItems: "center" }}>
-                      <Rating
-                        sx={{ paddingTop: "3%" }}
-                        name="simple-controlled"
-                        readOnly
-                        value={
-                          myVariable.rating == "undefined" ||
-                          myVariable.rating == null
-                            ? 0
-                            : myVariable.rating
-                        }
-                        size="small"
-                      />
-                      <Typography variant="body2" component="p" marginLeft={1}>
-                        <a href="#">{`(${
-                          myVariable.rating == "undefined" ||
-                          myVariable.rating == null
-                            ? 0
-                            : myVariable.rating
-                        } verified ratings)`}</a>
-                      </Typography>
-                    </Box>
-                    {myVariable.discount.discountAmount === 0 ? 
-                      <ProductDetails
-                      productName={myVariable.productName}
-                      maxNumOfProducts={myVariable.quantity}
-                      numOfProductsThatReduced={3}
-                      priceBefore={myVariable.price}
-                      discountPersentatge={
-                      myVariable.discount.discountAmount
-                      }
-                    />
-                   :
-                       <DiscountCard
-                      productName={myVariable.productName}
-                      maxNumOfProducts={myVariable.quantity}
-                      numOfProductsThatReduced={3}
-                      priceBefore={myVariable.price}
-                      discountPersentatge={
-                      myVariable.discount.discountAmount
-                      }
-                    />
-                    }
-                    <CardActions style={{ justifyContent: "center" }}>
-                      <CartButtons 
-                      
-                      product={myVariable}
-                      />
-                    </CardActions>
-                  </Grid>
-                </Grid>
-              </Item>
+    <>
+      <Container sx={{ marginY: "5%" }}>
+        {myfavourites.length <= 0 ? (
+          <Box
+            height="400px"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Alert
+              variant="filled"
+              severity="info"
+              style={{ width: "1000px", justifyContent: "center" }}
+            >
+              You don't have any favourites
+            </Alert>
+          </Box>
+        ) : (
+          <Box sx={{ flexGrow: 1 }} my={3}>
+            <Grid
+              container
+              spacing={{ xs: 2, md: 3 }}
+              columns={{ xs: 6, sm: 6, md: 12 }}
+            >
+              {favoriteCard}
             </Grid>
-            <Grid item xs={12} md={4} sm={12}>
-              <Delivery />
-            </Grid>
-          </Grid>
-        </Box>
+          </Box>
+        )}
       </Container>
-    )
+    </>
   );
-}
+};
+
+export default Favourite;

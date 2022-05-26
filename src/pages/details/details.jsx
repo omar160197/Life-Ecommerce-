@@ -7,6 +7,7 @@ import Delivery from "../../components/delivery/delivery";
 import ImageGallaryComponent from "../../components/Deatails/detailsScrollerCarasol";
 import { CardActions, Container, Rating, Typography } from "@mui/material";
 import DiscountCard from "../../components/Deatails/detailsDiscountCard";
+import ProductDetails from "../../components/Deatails/detailsProductCard";
 import CartButtons from "../../components/Deatails/detailsCartButton";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,7 +35,7 @@ export default function Deatails2() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location =useLocation()
-  let myVariable =location.state.selectedProduct
+  let myVariable =location.state.selectedProduct;
   const cart = useSelector((state) => state.cart);
    
 console.log(myVariable);
@@ -151,7 +152,9 @@ console.log(myVariable);
                         } verified ratings)`}</a>
                       </Typography>
                     </Box>
-                    <DiscountCard
+                    {myVariable.discount.discountAmount === 0 ? 
+                      <ProductDetails
+                      product={myVariable}
                       productName={myVariable.productName}
                       maxNumOfProducts={myVariable.quantity}
                       numOfProductsThatReduced={3}
@@ -160,6 +163,18 @@ console.log(myVariable);
                       myVariable.discount.discountAmount
                       }
                     />
+                   :
+                       <DiscountCard
+                      product={myVariable}
+                      productName={myVariable.productName}
+                      maxNumOfProducts={myVariable.quantity}
+                      numOfProductsThatReduced={3}
+                      priceBefore={myVariable.price}
+                      discountPersentatge={
+                      myVariable.discount.discountAmount
+                      }
+                    />
+                    }
                     <CardActions style={{ justifyContent: "center" }}>
                       <CartButtons 
                       

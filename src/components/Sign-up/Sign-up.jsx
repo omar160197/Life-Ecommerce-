@@ -76,14 +76,15 @@ const SignUP = () => {
                 }
             ))
             
+            
             dispatch(register(formData))
-
-            if (isError) {
-                console.log("error mesage")
-            }
-            if (isSuccess || user) {
-                navigate('/')
-            }
+            navigate('/register')
+            // if (isError) {
+            //     console.log("error mesage")
+            // }
+            // if (isSuccess || user) {
+            //     navigate('/')
+            // }
             // dispatch(reset())
         },
         validationSchema,

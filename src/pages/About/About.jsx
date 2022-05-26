@@ -1,8 +1,8 @@
 import img3 from "../../assets/teamwork.jpg";
 import img4 from "../../assets/contar.jpg";
-import img5 from "../../assets/img5.jpg";
-import img6 from "../../assets/img6.jpg";
-import img7 from "../../assets/2.png";
+import img5 from "../../assets/12.jpg";
+import img6 from "../../assets/11.jpg";
+import img7 from "../../assets/10.jpg";
 import img8 from "../../assets/comp.jpg";
 import img1 from "../../assets/img1.jpg";
 import team from "../../assets/team.jpg";
@@ -55,8 +55,8 @@ const About = () => {
         </button>
       </div>
 
-      <Container>
-      <div className="row justify-content-center">
+      <Container >
+      {/* <div className="row justify-content-center">
           <h1 className="text-center col-4  py-1 px-sm-1">
             Who We Are
           </h1>
@@ -81,8 +81,8 @@ const About = () => {
                 any effort out of your personal life and your clinic only.
            
           </p>
-        </div>
-          <div className="row">
+        </div> */}
+          <div className="row mt-5">
             <div className="col-md-12 col-sm-12">
               <CardRight
                 name="How do we help you?"
@@ -101,20 +101,20 @@ const About = () => {
     
         <div className="row justify-content-center ">
           <h2 className="text-center col-3 py-1 px-sm-1">
-            our team
+            Our Team
           </h2>
 
           <div className="row">
             <div className="col-md-6 col-sm-12">
               <Card
-                name="Research"
+                name="Mary Doe"
                 description=" We have our own engineers for both software and hardware why ODM and OEM service are welcome for us."
                 image={img5}
               />
             </div>
             <div className="col-md-6 col-sm-12">
               <Card
-                name=" Development "
+                name="John Doe "
                 description=" We have our own engineers for both software and hardware why ODM and OEM service are welcome for us."
                 image={img6}
               />
@@ -123,7 +123,7 @@ const About = () => {
           <div className="row">
             <div className="col-md-6 col-sm-12">
               <CardRight
-                name="Development"
+                name="John Doe "
                 description=" We have our own engineers for both software and hardware why ODM and OEM service are welcome for us."
                 image={img7}
               />
@@ -131,7 +131,7 @@ const About = () => {
             <div className="col-md-6 col-sm-12">
               <CardRight
                 image={img1}
-                name="Sales department"
+                name="John Doe "
                 description=" Stable and high efficiency sales group are very 
                  communicating skills and rich experience"
               />

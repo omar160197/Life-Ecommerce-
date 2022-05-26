@@ -9,8 +9,10 @@ import SkillsProgress from '../offers/offersCardProgress';
 
 
 
-export default function DiscountCard({productName,maxNumOfProducts,numOfProductsThatReduced,priceBefore,discountPersentatge}) {
+export default function DiscountCard({product,productName,maxNumOfProducts,numOfProductsThatReduced,priceBefore,discountPersentatge}) {
 //  let priceAfter=(priceBefore*discountPersentatge)/100
+let priceAfter = discountPersentatge !== 0 ?(priceBefore * discountPersentatge) / 100 :priceBefore;
+
  
     return (
     <Card sx={{ maxHeight:"100%",padding:"0",border:"solid 2px #0d6efd"}}>
@@ -49,6 +51,7 @@ export default function DiscountCard({productName,maxNumOfProducts,numOfProducts
            {`EGP ${priceBefore}`}
           </Typography>
           <SkillsProgress 
+           itemsLeft={product.itemsLeft}
           maxNumOfProducts={maxNumOfProducts}
           numOfProductsThatReduced={numOfProductsThatReduced}
           />

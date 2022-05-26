@@ -13,7 +13,8 @@ import { setDiscountId } from "../../store/offers/offersSlice";
 import { getProducts } from "../../store/product/productSlice";
 import { useEffect, useRef, useState } from "react";
 
-const SliderComponent = ({ colorStyle, textColor, discountId }) => {
+const SliderComponent = ({ colorStyle, textColor, discountId ,discountAmount}) => {
+  
   const [timerday, settimerday] = useState("00");
   const [timerhours, settimerhours] = useState("00");
   const [timerminutes, settimerminutes] = useState("00");
@@ -105,85 +106,89 @@ interval=setInterval(() => {
     ],
   };
 
-  const cardsInSlider =
-    products &&
-    products
-      .filter((item) => {
-        return item.discount._id === discountId;
-      })
-      .map((item, index) => {
-        return (
-          <div key={index}>
-            <OffersCard
-              product={item}
-              productName={item.productName}
-              maxNumOfProducts={item.quantity}
-              numOfProductsThatReduced={2}
-              priceBefore={item.price}
-              image={item.image}
-              discountPersentatge={item.discount.discountAmount}
-              productId={item._id}
-              description={item.description}
-            />
-          </div>
-        );
-      });
-
+  const cardsInSlider = 
+      products &&
+      products
+        .filter((item) => {
+          return item.discount._id === discountId;
+        })
+        .map((item, index) => {
+          return (
+            <div key={index}>
+              <OffersCard
+                product={item}
+                productName={item.productName}
+                maxNumOfProducts={item.quantity}
+                numOfProductsThatReduced={2}
+                priceBefore={item.price}
+                image={item.image}
+                discountPersentatge={discountAmount}
+                productId={item._id}
+                description={item.description}
+                
+              />
+            </div>
+          );
+        })
   return (
-    <div style={{ marginTop: "3%", marginBottom: "5%" }}>
-      <Box sx={{ flexGrow: 1, backgroundColor: colorStyle }}>
-        <Grid
-          container
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-          padding="6px"
-        >
-          <Grid item xs={4}>
-            <div
-              style={{
-                textAlign: "left",
-                paddingLeft: "2%",
-                fontWeight: "bold",
-                color: textColor,
-              }}
-            >
-              Flash Sales Every day
-            </div>
-          </Grid>
-          <Grid item xs={4}>
-            <div
-              style={{
-                textAlign: "center",
-                fontWeight: "bold",
-                fontSize: "25px",
-                color: textColor,
-              }}
-            >
-              Time Left {timerday}d : {timerhours}h:{timerminutes}m:{timerseconds}s
-            </div>
-          </Grid>
-          <Grid item xs={4}>
-            <div
-              style={{
-                textAlign: "right",
-                paddingRight: "2%",
-                color: textColor,
-              }}
-            >
-              <Link
-                onClick={() => dispatch(setDiscountId(discountId))}
-                style={{ color: `${textColor}`,containerColor:{colorStyle} }}
-                to="/offers"
-              >
-                See All <ArrowForwardIosOutlinedIcon fontSize="3%" />{" "}
-              </Link>
-            </div>
-          </Grid>
-        </Grid>
+    discountAmount===0?
+      <Box style={{visibility:"hidden"}}>
       </Box>
-      <Slider {...settings}>{cardsInSlider}</Slider>
-    </div>
+    :
+    <div style={{ marginTop: "3%", marginBottom: "5%" }}>
+    <Box sx={{ flexGrow: 1, backgroundColor: colorStyle }} >
+      <Grid
+        container
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        padding="6px"
+      >
+        <Grid item xs={4}>
+          <div
+            style={{
+              textAlign: "left",
+              paddingLeft: "2%",
+              fontWeight: "bold",
+              color: textColor,
+            }}
+          >
+            Flash Sales Every day
+          </div>
+        </Grid>
+        <Grid item xs={4}>
+          <div
+            style={{
+              textAlign: "center",
+              fontWeight: "bold",
+              fontSize: "25px",
+              color: textColor,
+            }}
+          >
+            Time Left {timerday}d : {timerhours}h:{timerminutes}m:{timerseconds}s
+          </div>
+        </Grid>
+        <Grid item xs={4}>
+          <div
+            style={{
+              textAlign: "right",
+              paddingRight: "2%",
+              color: textColor,
+            }}
+          >
+            <Link
+              onClick={() => dispatch(setDiscountId(discountId))}
+              style={{ color: `${textColor}`,containerColor:{colorStyle} }}
+              to="/offers"
+            >
+              See All <ArrowForwardIosOutlinedIcon fontSize="3%" />{" "}
+            </Link>
+          </div>
+        </Grid>
+      </Grid>
+    </Box>
+    <Slider {...settings}>{cardsInSlider}</Slider>
+  </div>
   );
 };
 

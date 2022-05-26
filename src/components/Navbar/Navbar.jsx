@@ -94,7 +94,7 @@ export default function Navbar() {
                 </NavLink> */}
               
               
-                <p className=" loguserName text-white d-none">  {currentUser &&"Hello! "+currentUser.customer.fullName} </p>
+                <p className=" loguserName text-white d-none">  {user &&"Hello! "+user.customer.fullName} </p>
             </div>
 
           <div
@@ -151,10 +151,11 @@ export default function Navbar() {
              if (user){
                 navigate('/profile',{
                state:{
-                index:3
+                index:3 
                }
              })}else navigate('/register')
             
+
             }} className="nav-item">
             <NavLink className="nav-link p-lg-3" to="/profile">
                 Favourite

@@ -55,7 +55,7 @@ export default function CustomizedAccordions({order,index}) {
     <div>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>{`Order ${index+1} ${order.status}`}</Typography>
+          <Typography  sx={{color:`${order.status === "Confirmed" ? 'green' :order.status === "inProgress" ? "orange":order.status === "Rejected" ? 'red':''}`}}>{`Order ${index+1} ${order.status}`}</Typography>
         </AccordionSummary>
         <AccordionDetails>
         <ProfileOrdersDetails order={order} />

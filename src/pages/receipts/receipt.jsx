@@ -16,6 +16,7 @@ import { useFormik } from 'formik';
 import Skeleton from '@mui/material/Skeleton'
 import * as Yup from 'yup';
 import ListSkelton from '../../components/Skeleton/Skeleton';
+import { getUsers } from '../../store/auth/authSlice';
 
 
 const validationSchema = Yup.object({
@@ -43,6 +44,7 @@ function Receipt() {
 
     const dispatch = useDispatch()
     useEffect(() => {
+        dispatch(getUsers(user.customer._id))
         dispatch(getTotals());
     }, [cart]);
 

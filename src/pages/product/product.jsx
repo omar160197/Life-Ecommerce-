@@ -1,7 +1,7 @@
 import { Box, Container, Grid } from "@mui/material";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import img7 from "../../assets/img7.jpg";
+import img7 from "../../assets/dentalcare.jpg";
 
 const Product = () => {
 

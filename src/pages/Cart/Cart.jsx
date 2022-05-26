@@ -27,6 +27,7 @@ const Cart = () => {
     dispatch(getTotals());
     if(user){
       dispatch(getUsers(user.customer._id))
+
     }
   }, [cart, dispatch]);
 
